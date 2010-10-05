@@ -1,0 +1,33 @@
+
+OVERVIEW
+This is a little program that interacts with the USPS address validation API.
+You give it JSON and this will give you cleaned-up JSON.
+
+You will need to sign up with the USPS folks and have them give you logins.
+If you are working with their test environment, modify the SITE and API_URL constants below.
+
+Given this JSON string over STDIN:
+  {
+    "address1": "771 Encina",
+    "address2": "",
+    "city":     "Gilbert",
+    "state":    "AZ",
+    "zip":      ""
+  }
+
+ Will spit out this cleaned up JSON:
+   {
+     "address1": "771 E ENCINAS AVE",
+     "address2": "",
+     "city":     "GILBERT",
+     "state":    "AZ"
+     "zip":      "85234",
+     "success":  true,
+   }
+
+ If USPS can't find the address, it'll output something like:
+   {
+     "error_message": "Address Not Found.",
+     "success":       false
+   }
+
